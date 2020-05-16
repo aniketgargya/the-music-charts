@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next';
-import dotenvFlow from 'dotenv-flow';
+import dotenv from 'dotenv';
 import { Track } from '../components';
 import { useEffect, MutableRefObject, useState } from 'react';
 import { useRef, useContext, FC } from 'react';
@@ -68,8 +68,8 @@ const Index: FC<IProps> = ({ clientId, redirectURI }) => {
 
     return (
         <>
-            <h1 className="text-green-700 font-light uppercase text-center ">these are today's hits</h1>
-            <div className="grid grid-cols-3 gap-24 mx-40">
+            <h1 className="text-green-700 font-light uppercase text-center text-2xl xs:text-4xl md:text-5xl lg:text-6xl my-4 md:my-8">these are today's hits</h1>
+            <div className="grid mx-auto grid-cols-1 w-3/5 max-w-sm row-gap-4 lg:max-w-none lg:w-4/5 lg:grid-cols-3 lg:col-gap-16 lg:row-gap-8">
                 {
                     data &&
                     data[0].data.tracks.items.map(({ track: { id, name, artists, preview_url, album: { images }, external_urls: { spotify: link } } }) => {
@@ -85,7 +85,7 @@ const Index: FC<IProps> = ({ clientId, redirectURI }) => {
 export default Index;
 
 export const getServerSideProps: GetServerSideProps = async context => {
-    dotenvFlow.config();
+    dotenv.config();
     const { CLIENT_ID, REDIRECT_URI } = process.env;
 
     return { props: { clientId: CLIENT_ID, redirectURI: REDIRECT_URI } };
