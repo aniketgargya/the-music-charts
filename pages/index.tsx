@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next';
-import dotenv from 'dotenv';
+import dotenvFlow from 'dotenv-flow';
 import { Track } from '../components';
 import { useEffect, MutableRefObject, useState } from 'react';
 import { useRef, useContext, FC } from 'react';
@@ -68,7 +68,7 @@ const Index: FC<IProps> = ({ clientId, redirectURI }) => {
 
     return (
         <>
-            <h1 className="text-6xl text-green-700 font-light uppercase text-center mb-10">these are today's hits</h1>
+            <h1 className="text-green-700 font-light uppercase text-center ">these are today's hits</h1>
             <div className="grid grid-cols-3 gap-24 mx-40">
                 {
                     data &&
@@ -85,7 +85,7 @@ const Index: FC<IProps> = ({ clientId, redirectURI }) => {
 export default Index;
 
 export const getServerSideProps: GetServerSideProps = async context => {
-    dotenv.config();
+    dotenvFlow.config();
     const { CLIENT_ID, REDIRECT_URI } = process.env;
 
     return { props: { clientId: CLIENT_ID, redirectURI: REDIRECT_URI } };
