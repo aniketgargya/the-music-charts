@@ -68,7 +68,14 @@ const Index: FC<IProps> = ({ clientId, redirectURI }) => {
 
     return (
         <>
-            <h1 className="text-green-700 font-light uppercase text-center text-2xl xs:text-4xl md:text-5xl lg:text-6xl my-4 md:my-8">these are today's hits</h1>
+            <h1 className="font-light uppercase text-center text-2xl xs:text-4xl md:text-5xl lg:text-6xl my-4 md:my-8" style={{
+                backgroundImage: "linear-gradient(to left, #00fc43, #007337)",
+                backgroundSize: "100%",
+                WebkitBackgroundClip: "text",
+                MozBackgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent"
+            }}>these are today's hits</h1>
             <div className="grid mx-auto grid-cols-1 w-3/5 max-w-sm row-gap-4 lg:max-w-none lg:w-4/5 lg:grid-cols-3 lg:col-gap-16 lg:row-gap-8">
                 {
                     data &&
