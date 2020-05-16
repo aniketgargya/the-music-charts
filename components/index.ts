@@ -1,3 +1,5 @@
 import Track from './track';
+import Play from './play';
+import Pause from './pause';
 
-export { Track };
+export { Track, Play, Pause };
