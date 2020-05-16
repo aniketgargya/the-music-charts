@@ -8,8 +8,7 @@ const useAudio = (url: string): [boolean, () => void] => {
 
     useEffect(() => {
         playing ? audio.play() : audio.pause();
-    }, [playing]
-    );
+    }, [playing]);
 
     useEffect(() => {
         audio.addEventListener('ended', () => setPlaying(false));
