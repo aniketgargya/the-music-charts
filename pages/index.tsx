@@ -22,17 +22,25 @@ const Index: FC<IProps> = ({ clientId, redirectURI }) => {
 
     const fetchData = async () => {
         try {
-            const response = await axios({
-                method: "GET",
-                url: "https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF",
-                headers: {
-                    "Authorization": `Bearer ${spotifyToken.current}`
-                }
-            });
+            const response = await axios.all([
+                axios({
+                    method: "GET",
+                    url: "https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF?limit=1000",
+                    headers: {
+                        "Authorization": `Bearer ${spotifyToken.current}`
+                    }
+                }),
+                axios({
+                    method: "GET",
+                    url: "https://api.spotify.com/v1/playlists/65LdqYCLcsV0lJoxpeQ6fW?limit=1000",
+                    headers: {
+                        "Authorization": `Bearer ${spotifyToken.current}`
+                    }
+                })
+            ]);
 
-            console.log(response.data);
-
-            setData(response.data);
+            console.log(response);
+            setData(response);
         } catch {
             signIn();
         }
@@ -64,9 +72,10 @@ const Index: FC<IProps> = ({ clientId, redirectURI }) => {
             <div className="grid grid-cols-3 gap-24 mx-40">
                 {
                     data &&
-                    data.tracks.items.map(({ track: { id, name, artists, album: { images }, external_urls: { spotify: link } } }) => (
-                        <Track key={id} name={name} imageURL={images[0].url} artists={artists} link={link} />
-                    ))
+                    data[0].data.tracks.items.map(({ track: { id, name, artists, preview_url, album: { images }, external_urls: { spotify: link } } }) => {
+                        const tiktokSong: boolean = data[1].data.tracks.items.some(({ track: { name: tiktokName } }) => name == tiktokName);
+                        return <Track key={id} name={name} imageURL={images[0].url} artists={artists} link={link} preview_url={preview_url} tiktokSong={tiktokSong} />;
+                    })
                 }
             </div>
         </>
