@@ -1,5 +1,5 @@
 # The Music Charts
-Demo available at http://the-music-charts.herokuapp.com/
+Demo available at 
 
 Buit with Tailwindcss, Next.js, Spotify API.
 
@@ -46,7 +46,7 @@ npm run build && npm run start
 ### 🥳It should be running 🥳
 
 ## Special Thanks
-Checkout the demo at http://the-music-charts.herokuapp.com/ and thanks to all of these companies!
+Checkout the demo at  and thanks to all of these companies!
 
 [![Tailwindcss](/public/github-readme/tailwindcss.png)](https://tailwindcss.com/)
 
