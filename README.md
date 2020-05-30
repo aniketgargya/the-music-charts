@@ -29,8 +29,8 @@ touch .env #on mac and linux
 
 - Put your Spotify client id and redirect uri in the file like so:
 ```
-CLIENT_ID=1234567890
-REDIRECT_URI=http://localhost:3000/
+NEXT_PUBLIC_CLIENT_ID=1234567890
+NEXT_PUBLIC_REDIRECT_URI=http://localhost:3000/
 ```
 
 - Start in development mode:

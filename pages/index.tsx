@@ -1,23 +1,16 @@
 import { GetServerSideProps } from 'next';
-import dotenv from 'dotenv';
 import { Track } from '../components';
 import { useEffect, MutableRefObject, useState } from 'react';
 import { useRef, useContext, FC } from 'react';
 import { SpotifyTokenContext } from '../contexts/';
 import axios from 'axios';
 
-interface IProps {
-    clientId: string,
-    redirectURI: string
-};
-
-const Index: FC<IProps> = ({ clientId, redirectURI }) => {
-    // const { spotifyToken, setSpotifyToken } = useContext(SpotifyTokenContext);
+const Index: FC<{}> = () => {
     const spotifyToken: MutableRefObject<string> = useRef('');
     const [data, setData] = useState(undefined);
 
     const signIn = () => {
-        window.location.replace(`https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectURI}&response_type=token`);
+        window.location.replace(`https://accounts.spotify.com/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}&response_type=token`);
     };
 
     const fetchData = async () => {
@@ -90,10 +83,3 @@ const Index: FC<IProps> = ({ clientId, redirectURI }) => {
 };
 
 export default Index;
-
-export const getServerSideProps: GetServerSideProps = async context => {
-    dotenv.config();
-    const { CLIENT_ID, REDIRECT_URI } = process.env;
-
-    return { props: { clientId: CLIENT_ID, redirectURI: REDIRECT_URI } };
-};
