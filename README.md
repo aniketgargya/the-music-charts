@@ -53,5 +53,3 @@ Checkout the demo at https://the-music-charts.now.sh/ and thanks to all of these
 [![Next.js](/public/github-readme/nextjs.png)](https://nextjs.org/)
 
 [![Spotify](/public/github-readme/spotify.png)](https://developer.spotify.com/)
-
-[![Heroku](/public/github-readme/heroku.png)](https://heroku.com/)
