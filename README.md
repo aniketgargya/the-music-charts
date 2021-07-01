@@ -43,7 +43,7 @@ npm run dev
 npm run build && npm run start
 ```
 
-### 🥳It should be running 🥳
+### 🥳 It should be running 🥳
 
 ## Special Thanks
 Checkout the demo at https://the-music-charts.now.sh/ and thanks to all of these companies!
