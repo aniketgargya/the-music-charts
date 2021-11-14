@@ -21,7 +21,8 @@ const Track: FC<IProps> = ({ name, imageURL, artists, link, preview_url, tiktokS
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'max-content 1fr max-content',
-                gridColumnGap: '0.5rem'
+                gridColumnGap: '0.5rem',
+                alignItems: 'center'
             }}>
                 {<img src="/tiktok.png" className={`rounded-full w-8 inline-block ${tiktokSong || "opacity-0"}`} />}
                 <a href={link}>
